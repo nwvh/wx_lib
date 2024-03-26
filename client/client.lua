@@ -119,6 +119,11 @@ function RandomString(length, num)
     return randomString
 end
 
+function TableToJson(table,indent)
+    indent = indent or true
+    return json.encode(table,{indent=indent})
+end
+
 exports("SpawnVehicle",function (model,coords,data)
     return SpawnVehicle(model,coords,data)
 end)
@@ -145,4 +150,29 @@ end)
 
 exports("randomString",function (length,numbers)
     return RandomString(length,numbers)
+end)
+
+
+-- local testtable = {}
+-- for i=1, math.random(10,50) do
+--         Wait(1)
+--         table.insert(testtable,{
+--             [i] = {
+--                 {},
+--                 {[i] = true},
+--                 RandomValue = RandomString(math.random(1,i),true),
+--                 RandomNumber = {
+--                     [i+1] = math.random()*(100/3.14)+math.sin(math.random(10,100))
+--                 },
+--             }
+--         })
+-- end
+-- CreateThread(function ()
+--     print(TableToJson(testtable))
+-- end)
+
+
+
+exports("tableToJson",function (table,indent)
+    return TableToJson(table,indent)
 end)
